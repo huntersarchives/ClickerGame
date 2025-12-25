@@ -17,13 +17,13 @@ public class ClickBehavior : MonoBehaviour
 
     void Update()
     {
+        countText.text = "Clicks: " + count.ToString();
         clickTotalAmountText.text = "+" + clickAmount.ToString();
     }
 
     void OnClick()
     {
         count= count + clickAmount;
-        Debug.Log("Button clicked! Count = " + count);
         countText.text = "Clicks: " + count.ToString();
     }
 }
