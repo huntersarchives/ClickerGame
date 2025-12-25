@@ -20,11 +20,9 @@ public class ClicksPerSecond : MonoBehaviour
 
     void OnClick()
     {
-        while (timer > 0)
-        {
-            clickBehavior.countText.text = "Clicks: " + clickBehavior.count;
-            clickBehavior.count += 1;
-        }
+
+        clickBehavior.countText.text = "Clicks: " + clickBehavior.count;
+        clickBehavior.count += 1;
 
     }
 }
