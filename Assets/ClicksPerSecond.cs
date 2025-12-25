@@ -8,7 +8,7 @@ public class ClicksPerSecond : MonoBehaviour
 {
 
     public ClickBehavior clickBehavior;
-    private float timer = 1f;
+    private float timer = 120f;
     public Button CPSButton;
     // Update is called once per frame
     void Start()
@@ -16,24 +16,15 @@ public class ClicksPerSecond : MonoBehaviour
         CPSButton.onClick.AddListener(OnClick);
     }
 
-    void Update()
-    {
-        clickBehavior.countText.text = "Clicks: " + clickBehavior.count;
-    }
+
 
     void OnClick()
     {
-        Timer();
-    }
-
-    void Timer()
-    {
-        timer -= Time.deltaTime;
-
-        if (timer <= 0f)
+        while (timer > 0)
         {
+            clickBehavior.countText.text = "Clicks: " + clickBehavior.count;
             clickBehavior.count += 1;
-            timer = 1f;
         }
+
     }
 }
