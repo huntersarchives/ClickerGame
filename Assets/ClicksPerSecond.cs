@@ -1,28 +1,51 @@
-using JetBrains.Annotations;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ClicksPerSecond : MonoBehaviour
 {
-
     public ClickBehavior clickBehavior;
-    private float timer = 120f;
-    public Button CPSButton;
-    // Update is called once per frame
+    public Button clickPerSecondButton;
+
+    private float timer = 10f;
+    private bool isRunning = false;
+
     void Start()
     {
-        CPSButton.onClick.AddListener(OnClick);
+        clickPerSecondButton.onClick.AddListener(OnClick);
     }
-
-
 
     void OnClick()
     {
+        if (clickBehavior.count > 100 && !isRunning)
+        {
+            clickBehavior.count -= 100;
+            clickBehavior.countText.text = "Clicks: " + clickBehavior.count;
+            if (isRunning)
+            {
+                return;
+            }
 
-        clickBehavior.countText.text = "Clicks: " + clickBehavior.count;
-        clickBehavior.count += 1;
-
+            timer = 10f;
+            isRunning = true;
+            StartCoroutine(Timer());
+            
+        }
     }
+
+    IEnumerator Timer()
+    {
+        while (timer > 0f)
+        {
+            clickBehavior.count += 1;
+            clickBehavior.countText.text = "Clicks: " + clickBehavior.count;
+
+            timer -= 1f;
+            yield return new WaitForSeconds(1f);
+        }
+
+        isRunning = false;
+        
+    }
+    
 }
