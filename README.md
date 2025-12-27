@@ -1,4 +1,4 @@
-# CLicks
+# Clicks
 
 Made in 12 hours for fun/ to learn Unity.
 
