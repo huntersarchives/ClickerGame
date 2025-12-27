@@ -19,6 +19,10 @@ public class ClickBehavior : MonoBehaviour
     {
         countText.text = "Clicks: " + count.ToString();
         clickTotalAmountText.text = "+" + clickAmount.ToString();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     void OnClick()
